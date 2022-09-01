@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Movie from './components/Movie.js'
 import './Loop.css'
 
 function Loop(){
-    const movies = [
+    const [movieTitle, setMovieTitle] = useState('')
+    const [movieYear, setMovieYear] = useState('')
+    const [movies, setMovies] = useState([
         {title: 'sample1', year: 2001},
         {title: 'sample2', year: 2002},
         {title: 'sample3', year: 2003}
-    ]
+    ])
+    
     const renderMovies = movies.map(movie => {
         // JSX형태로
         return (
@@ -23,6 +26,20 @@ function Loop(){
             // 컴포넌트 일때는 컴포넌트에 key를 주면 경고가 뜨지 않는다
             <Movie movie={movie} key={movie.title} />
         )
+    })
+
+    // 새로운 영화 추가
+    const addMovie = (event) => {
+        // 페이지 새로고침을 막기 위함
+        event.preventDefault()
+        setMovies([
+            ...movies,
+            { title: movieTitle, year: movieYear }
+        ])
+    }
+
+    useEffect(() => {
+        console.log('render')
     })
 
     return (
@@ -49,6 +66,23 @@ function Loop(){
             <br /><br />
             컴포넌트로 만들어서 반복할 때
             {renderMovieComponent}
+
+            {/* 새로운 영화 추가하기 */}
+            <form onSubmit={addMovie}>
+                <input
+                    type="text"
+                    value={movieTitle}
+                    placeholder="영화제목"
+                    onChange={e => setMovieTitle(e.target.value)}
+                /><br />
+                <input
+                    type="text"
+                    value={movieYear}
+                    placeholder="개봉년도"
+                    onChange={e => setMovieYear(e.target.value)}
+                /><br />
+                <button type='submit'>영화추가</button>
+            </form>
         </div>
     )
 }
