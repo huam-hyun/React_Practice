@@ -36,6 +36,8 @@ function Loop(){
             ...movies,
             { title: movieTitle, year: movieYear }
         ])
+        setMovieTitle('')
+        setMovieYear('')
     }
 
     useEffect(() => {
