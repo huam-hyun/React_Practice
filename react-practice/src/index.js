@@ -6,6 +6,7 @@ import Practice1 from './0901.js'
 import UseEffect from './UseEffect.js'
 import Parent from './Parent.js'
 import Condition from './Condition.js'
+import Loop from './Loop.js'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,8 @@ root.render(
   // <Practice1 />,
   // <UseEffect />
   // <Parent />
-  <Condition />
+  // <Condition />
+  <Loop />
 );
 
 // If you want to start measuring performance in your app, pass a function
