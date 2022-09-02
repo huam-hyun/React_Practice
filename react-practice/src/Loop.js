@@ -49,6 +49,10 @@ function Loop(){
 
     return (
         <div>
+            {/* 새로운 영화 추가하기 */}
+            {/* 부모 컴포넌트가 자식 컴포넌트로 함수를 전해주어 부모의 상태를 변경할 수 있도록 한다 */}
+            <MovieForm addMovie={addMovie} />
+            
             {/* <h1>Movie list</h1>
             반복문을 사용하지 않았을 때
             <div className='movie'>
@@ -77,10 +81,6 @@ function Loop(){
             <br /><br />
             컴포넌트로 만들어서 반복할 때
             {renderMovieComponent}
-
-            {/* 새로운 영화 추가하기 */}
-            {/* 부모 컴포넌트가 자식 컴포넌트로 함수를 전해주어 부모의 상태를 변경할 수 있도록 한다 */}
-            <MovieForm addMovie={addMovie} />
 
             {/* 자식 컴포넌트를 사용하지 않았을 때 코드 */}
             {/* <form onSubmit={addMovie}>
