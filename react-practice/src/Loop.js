@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Movie from './components/Movie.js'
+import MovieForm from './components/MovieForm.js'
 import './Loop.css'
 
 function Loop(){
-    const [movieTitle, setMovieTitle] = useState('')
-    const [movieYear, setMovieYear] = useState('')
     const [movies, setMovies] = useState([
         {title: 'sample1', year: 2001},
         {title: 'sample2', year: 2002},
@@ -29,15 +28,11 @@ function Loop(){
     })
 
     // 새로운 영화 추가
-    const addMovie = (event) => {
-        // 페이지 새로고침을 막기 위함
-        event.preventDefault()
+    const addMovie = (movie) => {
         setMovies([
             ...movies,
-            { title: movieTitle, year: movieYear }
+            movie
         ])
-        setMovieTitle('')
-        setMovieYear('')
     }
 
     useEffect(() => {
@@ -70,7 +65,11 @@ function Loop(){
             {renderMovieComponent}
 
             {/* 새로운 영화 추가하기 */}
-            <form onSubmit={addMovie}>
+            {/* 부모 컴포넌트가 자식 컴포넌트로 함수를 전해주어 부모의 상태를 변경할 수 있도록 한다 */}
+            <MovieForm addMovie={addMovie} />
+
+            {/* 자식 컴포넌트를 사용하지 않았을 때 코드 */}
+            {/* <form onSubmit={addMovie}>
                 <input
                     type="text"
                     value={movieTitle}
@@ -84,7 +83,7 @@ function Loop(){
                     onChange={e => setMovieYear(e.target.value)}
                 /><br />
                 <button type='submit'>영화추가</button>
-            </form>
+            </form> */}
         </div>
     )
 }
