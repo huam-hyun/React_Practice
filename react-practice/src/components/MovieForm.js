@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const MovieForm = ({ addMovie }) =>{
     const [movieTitle, setMovieTitle] = useState('')
-    const [movieYear, setMovieYear] = useState(0)
+    const [movieYear, setMovieYear] = useState()
 
     const resetForm = () =>{
         setMovieTitle('')
@@ -14,6 +14,7 @@ const MovieForm = ({ addMovie }) =>{
         event.preventDefault()
         // addMovie는 부모 컴포넌트에서 props로 넘겨준다
         addMovie({
+            id: Date.now(),
             title: movieTitle,
             year: movieYear
         })

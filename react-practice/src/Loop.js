@@ -5,9 +5,7 @@ import './Loop.css'
 
 function Loop(){
     const [movies, setMovies] = useState([
-        {title: 'sample1', year: 2001},
-        {title: 'sample2', year: 2002},
-        {title: 'sample3', year: 2003}
+        
     ])
     
     const renderMovies = movies.map(movie => {
@@ -15,15 +13,11 @@ function Loop(){
         return (
             // key를 사용해주어야 경고가 뜨지 않는다
             <div className='movie' key={movie.title}>
-                <div className='movie-title'>{movie.title}</div>
-                <div className='movie-year'>{movie.year}</div>
+                <div className='movie-title'>
+                    {movie.title}
+                    <span className='movie-year'>({movie.year})</span>
+                </div>
             </div>
-        )
-    })
-    const renderMovieComponent = movies.map(movie =>{
-        return (
-            // 컴포넌트 일때는 컴포넌트에 key를 주면 경고가 뜨지 않는다
-            <Movie movie={movie} key={movie.title} />
         )
     })
 
@@ -35,28 +29,48 @@ function Loop(){
         ])
     }
 
+    // 영화 삭제
+    const removeMovie = (id) =>{
+        setMovies([
+            ...movies.filter(movie => movie.id !== id)
+        ])
+    }
+
+    const renderMovieComponent = movies.map(movie =>{
+        return (
+            // 컴포넌트 일때는 컴포넌트에 key를 주면 경고가 뜨지 않는다
+            <Movie movie={movie} key={movie.id} removeMovie={removeMovie} />
+        )
+    })
+
     useEffect(() => {
         console.log('render')
     })
 
     return (
         <div>
-            <h1>Movie list</h1>
+            {/* <h1>Movie list</h1>
             반복문을 사용하지 않았을 때
             <div className='movie'>
-                <div className='movie-title'>{movies[0].title}</div>
-                <div className='movie-year'>{movies[0].year}</div>
+                <div className='movie-title'>
+                    {movies[0].title}
+                    <span className='movie-year'>({movies[0].year})</span>
+                </div>
             </div>
             <div className='movie'>
-                <div className='movie-title'>{movies[1].title}</div>
-                <div className='movie-year'>{movies[1].year}</div>
+                <div className='movie-title'>
+                    {movies[1].title}
+                    <span className='movie-year'>({movies[1].year})</span>
+                </div>
             </div>
             <div className='movie'>
-                <div className='movie-title'>{movies[2].title}</div>
-                <div className='movie-year'>{movies[2].year}</div>
+                <div className='movie-title'>
+                    {movies[2].title}
+                    <span className='movie-year'>({movies[2].year})</span>
+                </div>
             </div>
             
-            <br /><br />
+            <br /><br /> */}
             .map으로 반복해줬을 때
             {renderMovies}
 
