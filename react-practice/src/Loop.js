@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Movie from './components/Movie.js'
 import MovieForm from './components/MovieForm.js'
+import Navbar from './components/Navbar.js'
 import './Loop.css'
 
 function Loop(){
@@ -49,6 +50,7 @@ function Loop(){
 
     return (
         <div>
+            <Navbar />
             {/* 새로운 영화 추가하기 */}
             {/* 부모 컴포넌트가 자식 컴포넌트로 함수를 전해주어 부모의 상태를 변경할 수 있도록 한다 */}
             <MovieForm addMovie={addMovie} />
