@@ -8,6 +8,7 @@ import Parent from './Parent.js'
 import Condition from './Condition.js'
 import Loop from './Loop.js'
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,9 @@ root.render(
   // <UseEffect />
   // <Parent />
   // <Condition />
-  <Loop />
+  <BrowserRouter>
+    <Loop />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
