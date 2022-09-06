@@ -1,50 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import{
     BrowserRouter as Router, Routes, Route
 } from 'react-router-dom'
-import Movie from './components/Movie.js'
-import MovieForm from './components/MovieForm.js'
+
 import Navbar from './components/Navbar.js'
+import Users from './pages/Users.js'
+import Home from './pages/Home.js'
+import Movies from './pages/Movies.js'
+
 import './Loop.css'
 
 function Loop(){
-    const [movies, setMovies] = useState([])
-    
-    const renderMovies = movies.map(movie => {
-        // JSX형태로
-        return (
-            // key를 사용해주어야 경고가 뜨지 않는다
-            <div className='movie' key={movie.title}>
-                <div className='movie-title'>
-                    {movie.title}
-                    <span className='movie-year'>({movie.year})</span>
-                </div>
-            </div>
-        )
-    })
-
-    // 새로운 영화 추가
-    const addMovie = (movie) => {
-        setMovies([
-            ...movies,
-            movie
-        ])
-    }
-
-    // 영화 삭제
-    const removeMovie = (id) =>{
-        setMovies([
-            ...movies.filter(movie => movie.id !== id)
-        ])
-    }
-
-    const renderMovieComponent = movies.length ? movies.map(movie =>{
-        return (
-            // 컴포넌트 일때는 컴포넌트에 key를 주면 경고가 뜨지 않는다
-            <Movie movie={movie} key={movie.id} removeMovie={removeMovie} />
-        )
-    }) : (<h4>추가된 영화가 존재하지 않습니다</h4>)
-
     useEffect(() => {
         console.log('render')
     })
@@ -52,17 +18,14 @@ function Loop(){
     return (
         <div>
             <Navbar />
-            <Routes>
-                <Route path='/' element={<h1>Home</h1>} />
-                <Route path='/movies' element={ 
-                    <div>
-                        <MovieForm addMovie={addMovie} />
-                        {renderMovieComponent}
-                    </div>} />
-                <Route path='/users' element={
-                    <h1>Users</h1>
-                } />
-            </Routes>
+            <div className='container'>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/movies' element={<Movies />} />
+                    <Route path='/users' element={<Users />} />
+                </Routes>
+            </div>
+            
             
             {/* 새로운 영화 추가하기 */}
             {/* 부모 컴포넌트가 자식 컴포넌트로 함수를 전해주어 부모의 상태를 변경할 수 있도록 한다 */}
