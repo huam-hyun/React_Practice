@@ -4,10 +4,13 @@ import{
 } from 'react-router-dom'
 
 import Navbar from './components/Navbar.js'
-import Users from './pages/Users.js'
-import Home from './pages/Home.js'
-import Movies from './pages/Movies.js'
 
+// routes.js로 이동
+// import Users from './pages/Users.js'
+// import Home from './pages/Home.js'
+// import Movies from './pages/Movies.js'
+
+import routes from './routes.js'
 import './Loop.css'
 
 function Loop(){
@@ -20,9 +23,15 @@ function Loop(){
             <Navbar />
             <div className='container'>
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    {/* 일일히 반복한 것을 routes.js를 map으로 반복시킴 */}
+                    {routes.map(route =>{
+                        return (
+                            <Route path={route.path} element={<route.component />} />
+                        )
+                    })}
+                    {/* <Route path='/' element={<Home />} />
                     <Route path='/movies' element={<Movies />} />
-                    <Route path='/users' element={<Users />} />
+                    <Route path='/users' element={<Users />} /> */}
                 </Routes>
             </div>
             
