@@ -3,11 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const UserInfo = () =>{
+    // User 페이지로부터 받아온 token 정보들
     const { state } = useLocation()
+
+    // accessToken으로 받아올 정보를 저장할 공간
     const [userInfo, setUserInfo] = useState()
     const navigate = useNavigate()
 
+    // 페이지에 들어오면 실행할거
     useEffect(() =>{
+        // 토큰으로 유저 정보 가져오는 함수
         const getUserInfo = async () =>{
             const res = await axios({
                 method: 'POST',
@@ -24,6 +29,7 @@ const UserInfo = () =>{
         getUserInfo()
     }, [])
 
+    // 그냥 로그아웃하는 함수
     const logout = () =>{
         axios({
             method: 'POST',
@@ -56,6 +62,7 @@ const UserInfo = () =>{
             is_email_verified: {userInfo.is_email_verified.toString()} <br /> */}
             <br />{JSON.stringify(userInfo)} <br />
 
+            {/* 그냥 로그아웃하는 버튼, 카카오에 연결된 계정까지 로그아웃하는 링크 */}
             <button onClick={logout}>Logout</button><a href={KakaoLogoutURL}>LogoutWithDisconnect</a>
         </div>
     )
