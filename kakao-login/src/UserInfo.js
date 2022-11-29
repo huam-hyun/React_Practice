@@ -44,6 +44,17 @@ const UserInfo = () =>{
         })
     }
 
+    const renderInfo = userInfo ? (
+        <a>
+            email: {userInfo.email} <br />
+            email_needs_agreement: {userInfo.email_needs_agreement.toString()} <br />
+            has_email: {userInfo.has_email.toString()} <br />
+            is_email_valid: {userInfo.is_email_valid.toString()} <br />
+            is_email_verified: {userInfo.is_email_verified.toString()} <br />
+            <br />{userInfo ? JSON.stringify(userInfo) : 'Loading...'} <br />
+        </a>
+    ) : 'Loading...'
+
     const REST_API_KEY = '81937cfce25b708db35a8f1d1bd51f64'
     const LOGOUT_REDIRECT_URI = 'http://localhost:3000/'
     const KakaoLogoutURL = `https://kauth.kakao.com/oauth/logout?client_id=${REST_API_KEY}&logout_redirect_uri=${LOGOUT_REDIRECT_URI}`
@@ -53,14 +64,9 @@ const UserInfo = () =>{
             UserInfo Page
             <hr />
             사용자가 동의한 내용에 따라 달라짐 <br />
-            우리는 이메일만 동의 받았음 <br />
-{/* 
-            email: {userInfo.email} <br />
-            email_needs_agreement: {userInfo.email_needs_agreement.toString()} <br />
-            has_email: {userInfo.has_email.toString()} <br />
-            is_email_valid: {userInfo.is_email_valid.toString()} <br />
-            is_email_verified: {userInfo.is_email_verified.toString()} <br /> */}
-            <br />{JSON.stringify(userInfo)} <br />
+            현재는 이메일만 동의 받았음 <br />
+
+            {renderInfo}
 
             {/* 그냥 로그아웃하는 버튼, 카카오에 연결된 계정까지 로그아웃하는 링크 */}
             <button onClick={logout}>Logout</button><a href={KakaoLogoutURL}>LogoutWithDisconnect</a>

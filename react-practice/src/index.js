@@ -7,6 +7,7 @@ import UseEffect from './UseEffect.js'
 import Parent from './Parent.js'
 import Condition from './Condition.js'
 import Loop from './Loop.js'
+import AxiosTest from './axiosTest.js'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -18,8 +19,9 @@ root.render(
   // <UseEffect />
   // <Parent />
   // <Condition />
+  // <Loop />
   <BrowserRouter>
-    <Loop />
+    <AxiosTest />
   </BrowserRouter>
 );
 
