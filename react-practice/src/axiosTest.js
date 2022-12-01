@@ -5,17 +5,27 @@ const AxiosTest = () =>{
     const [data, setData] = useState()
 
     const post = () =>{
+        // axios({
+        //     url: 'http://localhost:3000/test',
+        //     data: {
+        //         id: 1,
+        //         id2: 2
+        //     },
+        //     method: 'POST'
+        // }).then(res =>{
+        //     console.log(data)
+        //     setData(JSON.stringify(res.data))
+        // })
+
         axios({
-            url: 'http://localhost:3000/test',
+            url: "http://localhost:3000/test",
+            method: "POST",
+            headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: {
-                id: 1,
-                id2: 2
+              "access_token": "access_token",
+              "type": "Kakao"
             },
-            method: 'POST'
-        }).then(res =>{
-            console.log(data)
-            setData(JSON.stringify(res.data))
-        })
+          });
     }
 
     return (
