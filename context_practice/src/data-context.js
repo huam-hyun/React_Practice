@@ -1,6 +1,3 @@
 import React from "react";
 
-export const dataContext = React.createContext({
-    data: 0,
-    setCount: () => {}
-})
+export const dataContext = React.createContext(null)

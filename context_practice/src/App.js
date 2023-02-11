@@ -1,25 +1,14 @@
-import { useState } from 'react';
-
-import { dataContext } from './data-context';
-import Child from './Child';
-
-import './App.css'
-
+import Sample1 from './Sample1'
+import Sample2 from './Sample2';
 
 function App() {
-  const [context, setContext] = useState(0)
-  const setCount = (count) => {
-    setContext(count)
-  }
-
   return (
     <div className="App">
-      <dataContext.Provider value={{}}>
-        app
-        <Child />
-      </dataContext.Provider>
+      <Sample1 />
+      <hr />
+      <Sample2 />
     </div>
   );
 }
 
-export default App;
+export default App
