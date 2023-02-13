@@ -1,7 +1,8 @@
 import Sample1 from './Sample1'
-import Sample2 from './Sample2';
-import Sample3 from './Sample3';
-import Sample4 from './Sample4';
+import Sample2 from './Sample2'
+import Sample3 from './Sample3'
+import Sample4 from './Sample4'
+import Sample5 from './Sample5'
 
 function App() {
   return (
@@ -9,14 +10,17 @@ function App() {
       Sample1
       <Sample1 />
       <hr />
-      Sample2
+      ContextAPI only and change in Component
       <Sample2 />
       <hr />
-      Sample3
+      ContextAPI only and change in Provider
       <Sample3 />
       <hr />
-      Sample4
+      ContextAPI only and divide value and action
       <Sample4 />
+      <hr />
+      ContextAPI with useReducer
+      <Sample5 />
     </div>
   );
 }
