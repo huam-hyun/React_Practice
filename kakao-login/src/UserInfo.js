@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { KAKAO_LOGOUT_URL } from './data'
 
 const UserInfo = () =>{
     // User 페이지로부터 받아온 token 정보들
@@ -55,10 +56,6 @@ const UserInfo = () =>{
         </a>
     ) : 'Loading...'
 
-    const REST_API_KEY = '81937cfce25b708db35a8f1d1bd51f64'
-    const LOGOUT_REDIRECT_URI = 'http://localhost:3000/'
-    const KakaoLogoutURL = `https://kauth.kakao.com/oauth/logout?client_id=${REST_API_KEY}&logout_redirect_uri=${LOGOUT_REDIRECT_URI}`
-
     return (
         <div>
             UserInfo Page
@@ -69,7 +66,12 @@ const UserInfo = () =>{
             {renderInfo}
 
             {/* 그냥 로그아웃하는 버튼, 카카오에 연결된 계정까지 로그아웃하는 링크 */}
-            <button onClick={logout}>Logout</button><a href={KakaoLogoutURL}>LogoutWithDisconnect</a>
+            <button onClick={logout}>
+                Logout
+            </button>
+            <a href={KAKAO_LOGOUT_URL}>
+                LogoutWithDisconnect
+            </a>
         </div>
     )
 }

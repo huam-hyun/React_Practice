@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+
 import { useNavigate } from "react-router-dom";
+
+import { REST_API_KEY } from "./data";
 
 const User = () =>{
     const navigate = useNavigate()
@@ -17,7 +20,7 @@ const User = () =>{
                 method: 'POST',
                 params: {
                     grant_type: 'authorization_code',
-                    client_id: '81937cfce25b708db35a8f1d1bd51f64',
+                    client_id: REST_API_KEY,
                     redirect_uri: 'http://localhost:3000/user',
                     code: code
                 }
