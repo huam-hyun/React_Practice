@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# API키 및 보여주면 안되는 데이터
+src/data.js
