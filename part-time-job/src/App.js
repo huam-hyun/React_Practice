@@ -81,11 +81,11 @@ function App() {
   const changeInputType = (e) => {
     e.preventDefault();
     const type = e.target.value;
-
-    if(outputType === type){
-      setOutputType(type === '시급' ? '일급' : '시급');
-    }
+    console.log('changeInputType', type);
     setInputType(type);
+
+    // inputType과 outputType이 같아질 때 outputType을 수정해야 함
+
     setWorkingHour(8);
     setWorkingDay(1);
   }
@@ -99,8 +99,9 @@ function App() {
 
   const changeOutputType = (e) => {
     e.preventDefault();
-
-    setOutputType(e.target.value);
+    const type = e.target.value;
+    console.log('changeOutputType', type);
+    setOutputType(type);
   }
 
   const changeOverTime = (e) => {
@@ -166,7 +167,7 @@ function App() {
             </Form.Group>
             <Form.Group as={Row}>
               <Form.Label column sm="2">
-                <Form.Select onChange={changeOutputType}>
+                <Form.Select onChange={changeOutputType} id="outputType">
                   {
                     ['시급', '일급', '주급', '월급', '연봉'].filter(type => type !== inputType).map(type => {
                       return (
@@ -177,6 +178,9 @@ function App() {
               </Form.Label>
               <Col>
                 으로 환산
+              </Col>
+              <Col>
+                {inputType} {outputType}
               </Col>
             </Form.Group>
 
