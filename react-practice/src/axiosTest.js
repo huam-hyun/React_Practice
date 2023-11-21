@@ -18,13 +18,15 @@ const AxiosTest = () =>{
         // })
 
         axios({
-            url: "http://localhost:3000/test",
-            method: "POST",
+            url: "https://jsonplaceholder.typicode.com/users",
+            method: "GET",
             headers: { 'content-type': 'application/x-www-form-urlencoded' },
             data: {
               "access_token": "access_token",
               "type": "Kakao"
             },
+          }).then((res) => {
+            setData(JSON.stringify(res.data))
           });
     }
 
