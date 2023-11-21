@@ -8,17 +8,10 @@ const UseState = (): ReactElement => {
     return 'lazyState'
   })
 
-  useEffect(() => {
-    console.log('render 변경으로 인한 리렌더링')
-  }, [render])
+  console.log('컴포넌트가 재렌더링 되면 함수가 실행됩니다.')
 
   const handleRerender = () => {
     setRerender(render + 1)
-  }
-
-  const handleStateChange = () => {
-    setCommonState('commonState is changed')
-    setLazyState('lazyState is changed')
   }
 
   return (
