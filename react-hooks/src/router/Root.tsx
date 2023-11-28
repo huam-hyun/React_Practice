@@ -1,16 +1,16 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
 
-import Home from '../pages/Home'
+import Navbar from '../component/Navbar/Navbar'
+import { Route, Routes } from 'react-router-dom'
+import UseEffect from '../pages/UseEffect'
 import UseState from '../pages/UseState'
 
 const Root = (): React.ReactNode => {
   return (
-    <Routes>
-      {/* 새로운 페이지를 추가하고 싶다면 여기에 */}
-      <Route path="/" element={<Home />} />
-      <Route path="/useState" element={<UseState />} />
-    </Routes>
+    <>
+      <Navbar />
+      <header>리액트에서 사용할 여러가지 훅을 연습할 페이지</header>
+    </>
   )
 }
 

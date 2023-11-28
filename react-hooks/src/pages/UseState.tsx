@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react"
+import React, { ReactElement, useState } from "react"
 
 const UseState = (): ReactElement => {
   const [render, setRerender] = useState<number>(0)
