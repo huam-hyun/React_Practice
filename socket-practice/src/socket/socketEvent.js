@@ -1,10 +1,7 @@
-export const connectSocketEvent = (socket) => {
-  socket.on('connected', () => {
-    console.log('connected!')
-    socket.emit('message', { message: 'Hello world!' })
-  })
+export const connectChannel = (channel) => {
 
-  socket.on('receive_message', (data) => {
-    console.log('receive_message', data)
-  })
+}
+
+export const disconnectChanne = (channel) => {
+
 }
