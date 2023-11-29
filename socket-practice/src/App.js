@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { sendSocketMessage } from "./socket/socket"
 
 function App() {
@@ -12,6 +11,7 @@ function App() {
         socket 연습
       </header>
       <section>
+        <h1></h1>
         <button onClick={sendMessage}>메시지 전송</button>
       </section>
     </div>
