@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
 
-const MESSAGE_TYPE = {
+export const MESSAGE_TYPE = {
   GLOBAL: 'global',
   DIRECT_MESSAGE: 'dm',
   ROOM: 'room',
@@ -16,8 +16,15 @@ socket.on('connected', () => {
 socket.on('receive_message', (data) => {
   console.log('receive_message', data)
 })
-// 소켓 사용하는 함수 정의
-export const sendSocketMessage = ({ type = MESSAGE_TYPE.GLOBAL, payload }) => {
+/**
+ * 소켓 사용하는 함수 정의
+ * @param {string} type
+ * @param {object} payload
+ * @param {string} payload.room
+ * @param {number} payload.id
+ * @param {string} payload.message
+ */
+export const sendSocketMessage = (type = MESSAGE_TYPE.GLOBAL, payload) => {
   // payload에 필요한 변수들은 알아서 추가할것
   const { room, id, message } = payload
   switch (type) {

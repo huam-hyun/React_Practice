@@ -1,9 +1,8 @@
-import { useEffect } from "react"
-import { sendSocketMessage } from "./socket/socket"
+import { sendSocketMessage, MESSAGE_TYPE } from "./socket/socket"
 
 function App() {
   const sendMessage = () => {
-    sendSocketMessage('첫 메시지!')
+    sendSocketMessage(MESSAGE_TYPE.GLOBAL, { message: 'Hello World' })
   }
 
   return (
