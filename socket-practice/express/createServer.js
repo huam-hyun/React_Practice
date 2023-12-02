@@ -1,9 +1,12 @@
 const http = require('http')
 const isDev = require('isdev')
 
+let io
+
 function createServer(app) {
   const server = http.createServer(app)
-  const io = require('socket.io')(server, {
+
+  io = require('socket.io')(server, {
     cors: {
       origin: isDev
         ? 'http://localhost:3000'
@@ -21,7 +24,27 @@ function createServer(app) {
     })
   })
 
+  io.of('/').adapter.on('create-room', (room) => {
+    console.log(`room ${room} is created`)
+  })
+
+  io.of('/').adapter.on('delete-room', (room) => {
+    console.log(`room ${room} is deleted`)
+  })
+
+  io.of('/').adapter.on('join-room', (room, id) => {
+    console.log(`socket ${id} has joined room ${room}`)
+  })
+
+  io.of('/').adapter.on('leave-room', (room, id) => {
+    console.log(`socket ${id} left room ${room}`)
+  })
+
   return server
 }
 
-module.exports = { createServer }
+function closeSocket() {
+  io.removeAllListeners()
+}
+
+module.exports = { createServer, closeSocket }
